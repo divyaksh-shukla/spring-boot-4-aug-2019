@@ -6,6 +6,7 @@ import javax.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -42,6 +43,11 @@ public class User implements Serializable {
 	private List<Customer> customers;
 
 	public Customer addCustomer(Customer customer) {
+		
+		// just a check
+		if(getCustomers() == null) {
+			customers = new ArrayList<Customer>();
+		}
 		getCustomers().add(customer);
 		customer.setUser(this);
 
